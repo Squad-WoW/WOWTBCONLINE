@@ -10321,6 +10321,9 @@ uint8 Player::CanUnequipItem(uint16 pos, bool swap) const
 
     if (!swap && pItem->IsBag() && !((Bag*)pItem)->IsEmpty())
         return EQUIP_ERR_CAN_ONLY_DO_WITH_EMPTY_BAGS;
+	
+	if (HasFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_DISARMED)) 
+		return EQUIP_ERR_YOU_ARE_STUNNED; 
 
     return EQUIP_ERR_OK;
 }
